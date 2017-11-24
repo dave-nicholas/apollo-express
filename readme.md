@@ -1,5 +1,7 @@
-#Apollo-express
+# Apollo-express
 
-##installation and running 
+## Installation and running 
+
 `yarn`
+
 `yarn start`
