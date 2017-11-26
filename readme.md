@@ -1,5 +1,7 @@
 # Apollo-express
 
+A basic graphql server
+
 ## Installation and running 
 
 `yarn`
@@ -31,5 +33,13 @@
     date
     reference
   }
+}
+```
+
+### Quote
+
+```graphql
+{
+  quote
 }
 ```
