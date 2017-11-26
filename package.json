@@ -7,15 +7,19 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build":
-      "rm -rf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "build": "rm -rf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
     "start": "npm run build && node dist/server.js"
   },
   "dependencies": {
     "apollo-server-express": "^1.2.0",
     "body-parser": "^1.18.2",
+    "casual": "^1.5.17",
     "express": "^4.16.2",
-    "graphql": "^0.11.7"
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.8.0",
+    "lodash": "^4.17.4",
+    "sequelize": "^4.22.15",
+    "sqlite": "^2.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
