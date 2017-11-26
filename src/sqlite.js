@@ -4,7 +4,8 @@ import _ from 'lodash';
 
 const db = new Sequelize('shipments', null, null, {
   dialect: 'sqlite',
-  storage: './shipments.sqlite'
+  storage: './shipments.sqlite',
+  operatorsAliases: false
 });
 
 const ShipmentModel = db.define('shipment', {
