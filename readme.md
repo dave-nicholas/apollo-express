@@ -1,6 +1,6 @@
 # Apollo-express
 
-A basic graphql
+A basic graphql server
 
 ## Installation and running 
 
