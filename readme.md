@@ -10,7 +10,7 @@
 
 ### Get all shipments
 
-```
+```graphql
 {
   shipments {
     date
@@ -25,7 +25,7 @@
 
 ### Get shipment by ref
 
-```
+```graphql
 {
   shipment(reference: "Mrs. Maude Huel") {
     date
