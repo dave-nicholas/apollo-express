@@ -1,4 +1,5 @@
 import { Shipment, Item } from './sqlite';
+import { Quote } from './fetch';
 
 const resolvers = {
   Query: {
@@ -7,6 +8,9 @@ const resolvers = {
     },
     shipments(_) {
       return Shipment.findAll();
+    },
+    quote(_) {
+      return Quote.getOne();
     }
   },
   Shipment: {

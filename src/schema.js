@@ -17,6 +17,7 @@ type Item {
 type Query {
  shipment(reference: String): Shipment
  shipments: [Shipment]
+ quote: String
 }
 schema {
  query: Query
