@@ -1,23 +1,28 @@
-import { makeExecutableSchema } from 'graphql-tools';
+import { makeExecutableSchema, addMockFunctionsToSchema } from 'graphql-tools';
+import resolvers from './resolvers';
 
 const typeDefs = `
-type Author {
+type Shipment {
   id: Int
-  firstName: String
-  lastName: String
-  posts: [Post]
+  date: Int
+  reference: String
+  items: [Item]
 }
-type Post {
+type Item {
   id: Int
-  title: String
-  text: String
-  views: Int
-  author: Author
-}
+  description: String
+  quantity: Int
+  shipment: Shipment
+},
 type Query {
-  author(firstName: String, lastName: String): Author
-  getFortuneCookie: String
+ shipment(reference: String): Shipment
+ shipments: [Shipment]
+}
+schema {
+ query: Query
 }
 `;
 
-export default makeExecutableSchema({ typeDefs });
+const schema = makeExecutableSchema({ typeDefs, resolvers });
+
+export default schema;
