@@ -6,7 +6,8 @@ type Shipment {
   id: Int
   date: Int
   reference: String
-  items: [Item]
+  items: [Item],
+  address: String
 }
 type Item {
   id: Int
