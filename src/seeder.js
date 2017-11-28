@@ -3,6 +3,9 @@ import { Address } from './mongo';
 import casual from 'casual';
 import _ from 'lodash';
 
+//clear mongo document
+Address.remove({}, () => {});
+
 export const seed = () => {
   casual.seed(123);
   db.sync({ force: true }).then(() => {
