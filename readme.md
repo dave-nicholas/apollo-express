@@ -10,6 +10,8 @@ This example includes: mongodb, sqlite and fetch.
 
 `yarn start`
 
+This demo assumes you have a local mongo db setup with a database called `test_1`.
+
 Then visit `http://localhost:3000/graphiql`.
 
 ## Example queries 
