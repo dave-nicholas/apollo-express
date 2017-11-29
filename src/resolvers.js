@@ -1,5 +1,6 @@
 import { Shipment, Item } from './sqlite';
 import { Address } from './mongo';
+import { index } from './algolia';
 import { Quote } from './fetch';
 
 const resolvers = {
@@ -9,6 +10,9 @@ const resolvers = {
     },
     shipments() {
       return Shipment.findAll();
+    },
+    carrier(_, args) {
+      return Shipment.find({ where: args });
     },
     quote() {
       return Quote.getOne();
