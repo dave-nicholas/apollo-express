@@ -1,4 +1,5 @@
 import { Shipment, Item } from './sqlite';
+import { Address } from './mongo';
 import { Quote } from './fetch';
 
 const resolvers = {
@@ -6,16 +7,21 @@ const resolvers = {
     shipment(_, args) {
       return Shipment.find({ where: args });
     },
-    shipments(_) {
+    shipments() {
       return Shipment.findAll();
     },
-    quote(_) {
+    quote() {
       return Quote.getOne();
     }
   },
   Shipment: {
     items(shipment) {
       return shipment.getItems();
+    },
+    address({ id }) {
+      return Address.findOne({ shipmentId: id }).then(
+        address => address.address
+      );
     }
   },
   Item: {
