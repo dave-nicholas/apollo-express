@@ -60,8 +60,8 @@ Then visit `http://localhost:3000/graphiql`.
 ```graphql
 {
   shipmentsByCarrier(carrier: "Langosh LLC") {
-  	date
+    date
     reference
-	}
+  }
 }
 ```
