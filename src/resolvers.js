@@ -1,5 +1,6 @@
 import { Shipment, Item } from './sqlite';
 import { Address } from './mongo';
+import { index } from './algolia';
 import { Quote } from './fetch';
 
 const resolvers = {
@@ -9,6 +10,12 @@ const resolvers = {
     },
     shipments() {
       return Shipment.findAll();
+    },
+    async shipmentsByCarrier(_, { carrier }) {
+      const { hits } = await index.search(carrier);
+      return !!hits.length
+        ? Shipment.find({ where: { id: hits.map(hit => hit.shipmentId) } })
+        : null;
     },
     quote() {
       return Quote.getOne();

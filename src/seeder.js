@@ -1,5 +1,6 @@
 import { ShipmentModel, db } from './sqlite';
 import { Address } from './mongo';
+import { index } from './algolia';
 import casual from 'casual';
 import _ from 'lodash';
 
@@ -20,10 +21,18 @@ export const seed = () => {
             quantity: casual.integer(1, 10)
           });
         });
+
+        //populate mongodb
         const address = new Address();
-        address.shipmentId = shipment.id;
+        address.shipmentId = shipment.id; //store in mongo against shipment id
         address.address = casual.address;
         address.save();
+
+        //populate algolia search
+        index.addObject({
+          carrier: casual.company_name,
+          shipmentId: shipment.id //store in algolia against shipment id
+        });
       });
     });
   });

@@ -6,7 +6,7 @@ type Shipment {
   id: Int
   date: Int
   reference: String
-  items: [Item],
+  items: [Item]
   address: String
 }
 type Item {
@@ -17,7 +17,8 @@ type Item {
 },
 type Query {
  shipment(reference: String): Shipment
- shipments: [Shipment]
+ shipments: [Shipment],
+ shipmentsByCarrier(carrier: String): Shipment
  quote: String
 }
 schema {
