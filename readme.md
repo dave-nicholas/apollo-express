@@ -1,8 +1,13 @@
 # Apollo-express
 
-A basic graphql server to demonstrate running multiple datasources behind a single graphql endpoint.
-This concept is handy if you wish to defer things like searching to 
-This example includes: mongodb, sqlite and fetch.
+A basic node graphql server to demonstrate running multiple datasources behind a single graphql endpoint using apollographql.
+This concept is handy if you wish to defer things like searching to different data providers.
+
+This example includes: 
+ * MongoDB
+ * sqlite
+ * Algolia
+ * fetch
 
 ## Installation and running 
 
@@ -17,11 +22,14 @@ This demo assumes you have a local mongo db setup with a database called `test_1
 This demo assumes that you have an aloglia account (Community Plan is fine).
 You just need to rename the `.env.sample` file to `.env` and enter your aloglia api key.
 
-Then visit `http://localhost:3000/graphiql`.
+### Run
+Then visit to the delightful `GraphiQL` browser interface.
+
+`http://localhost:3000/graphiql`
 
 ## Example queries 
 
-### Get all shipments
+### Get all shipments - sqlite
 
 ```graphql
 {
@@ -36,18 +44,17 @@ Then visit `http://localhost:3000/graphiql`.
 }
 ```
 
-### Get shipment by ref
+### Get shipment - sqlite + mongodb
 
 ```graphql
 {
   shipment(reference: "Mrs. Maude Huel") {
-    date
-    reference
+    address
   }
 }
 ```
 
-### Quote - fetch
+### Quote - fetch request
 
 ```graphql
 {
@@ -55,7 +62,7 @@ Then visit `http://localhost:3000/graphiql`.
 }
 ```
 
-### Getting results from sqlite after a text search on Algolia
+### Getting results from sqlite after a search - Algolia + sqlite
 
 ```graphql
 {
