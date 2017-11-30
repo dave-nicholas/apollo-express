@@ -11,8 +11,11 @@ const resolvers = {
     shipments() {
       return Shipment.findAll();
     },
-    carrier(_, args) {
-      return Shipment.find({ where: args });
+    async shipmentsByCarrier(_, { carrier }) {
+      const { hits } = await index.search(carrier);
+      return !!hits.length
+        ? Shipment.find({ where: { id: hits.map(hit => hit.shipmentId) } })
+        : null;
     },
     quote() {
       return Quote.getOne();
